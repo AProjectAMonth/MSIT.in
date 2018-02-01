@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^msit/admin/login/?', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^', include('web.urls')),
+    url(r'^', include('newsletters.urls')),
 ]
 
 if settings.DEBUG:
