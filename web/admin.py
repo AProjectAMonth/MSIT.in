@@ -39,8 +39,12 @@ class FacultyAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
         qs = super(FacultyAdmin, self).get_queryset(request)
-        ud = User.objects.get(username=request.user.username)
-        u = UserDepartment.objects.get(user=ud)
+        try:
+            ud = User.objects.get(username=request.user.username)
+            u = UserDepartment.objects.get(user=ud)
+        except UniversityDetails.DoesNotExist:
+            u = None
+        
         if request.user.is_superuser or u.department == 'All':
             return qs
         else:

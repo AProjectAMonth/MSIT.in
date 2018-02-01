@@ -3,7 +3,7 @@ from django.conf.urls import url
 from .views import *
 
 urlpatterns = [
-    url(r'^/?$', home, name='home page'),
+    url(r'^$', home, name='home page'),
     url(r'^timetable/?$', timetable, name="timetable"),
     url(r'^attendance/?$', attendance, name="attendance"),
     url(r'^syllabus/?$', syllabus, name="syllabus"),

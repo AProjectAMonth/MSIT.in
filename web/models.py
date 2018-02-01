@@ -11,6 +11,7 @@ from django.utils.timezone import now
 
 from django.contrib.auth.models import AbstractUser, Permission
 from django.contrib.auth.hashers import make_password
+from . import get_username
 from get_username import current_request
 from multiselectfield import MultiSelectField
 
@@ -557,7 +558,7 @@ class Department(models.Model):
 
 
 class DepartmentPage(models.Model):
-    department_name = models.ForeignKey(Department)
+    department_name = models.ForeignKey(Department, on_delete=models.CASCADE)
     title = models.CharField(max_length=70)
     order = models.PositiveIntegerField()
     content = RichTextUploadingField()
